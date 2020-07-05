@@ -1,0 +1,17 @@
+import time
+import os
+
+commands = ["spark-submit --executor-memory 2g --class cse512.Entrance CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar result hotzoneanalysis point-hotzone.csv zone-hotzone.csv","spark-submit --executor-memory 2g --class cse512.Entrance CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar result hotcellanalysis yellow_trip_sample_100000.csv","spark-submit --executor-memory 4g --class cse512.Entrance CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar result hotzoneanalysis point-hotzone.csv zone-hotzone.csv","spark-submit --executor-memory 4g --class cse512.Entrance CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar result hotcellanalysis yellow_trip_sample_100000.csv","spark-submit --executor-memory 5g --class cse512.Entrance CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar result hotzoneanalysis point-hotzone.csv zone-hotzone.csv","spark-submit --executor-memory 5g --class cse512.Entrance CSE512-Hotspot-Analysis-Template-assembly-0.1.0.jar result hotcellanalysis yellow_trip_sample_100000.csv","spark-submit --executor-memory 5g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result rangequery arealm10000.csv -93.63173,33.0183,-93.359203,33.219456","spark-submit --executor-memory 5g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result rangejoinquery arealm10000.csv zcta10000.csv","spark-submit --executor-memory 5g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result distancequery arealm10000.csv -88.331492,32.324142 1","spark-submit --executor-memory 5g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result distancejoinquery arealm10000.csv arealm10000.csv 0.1","spark-submit --executor-memory 4g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result rangequery arealm10000.csv -93.63173,33.0183,-93.359203,33.219456","spark-submit --executor-memory 4g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result rangejoinquery arealm10000.csv zcta10000.csv","spark-submit --executor-memory 4g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result distancequery arealm10000.csv -88.331492,32.324142 1","spark-submit --executor-memory 4g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result distancejoinquery arealm10000.csv arealm10000.csv 0.1","spark-submit --executor-memory 2g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result rangequery arealm10000.csv -93.63173,33.0183,-93.359203,33.219456","spark-submit --executor-memory 2g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result rangejoinquery arealm10000.csv zcta10000.csv","spark-submit --executor-memory 2g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result distancequery arealm10000.csv -88.331492,32.324142 1","spark-submit --executor-memory 2g --class cse512.SparkSQLExample CSE512-Phase1-assembly-0.1.0.jar result distancejoinquery arealm10000.csv arealm10000.csv 0.1"]
+
+with open("result.txt", "a+") as file:
+    for index, command in enumerate(commands):
+        try:
+            start_time = time.time()
+            os.system(command)
+            end_time = time.time()
+            temp = " " +str(end_time-start_time) + " command_"+ str(index)
+            print(temp)
+            file.write(temp)
+        except:
+            print("Exception occured in command_{0}".format(index))
+        time.sleep(200)
